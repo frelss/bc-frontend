@@ -125,7 +125,7 @@ const OverviewStats = ({ projectId }) => {
             <div className="space-y-2">
               <li className="flex flex-col sm:flex-row items-baseline mb-2 sm:mb-0 sm:mr-4">
                 <span className="font-medium text-gray-300">StartDate:</span>
-                <span className="ml-2 px-2 py-1 bg-green-500 rounded-full text-white">
+                <span className="ml-2 px-2 py-1 bg-green-500 rounded-full text-white flex-shrink-0">
                   {projectDetails.startDate
                     ? formatDate(projectDetails.startDate)
                     : "N/A"}
@@ -133,7 +133,7 @@ const OverviewStats = ({ projectId }) => {
               </li>
               <li className="flex flex-col sm:flex-row items-baseline">
                 <span className="font-medium text-gray-300">EndDate:</span>
-                <span className="ml-2 px-2 py-1 bg-red-500 rounded-full text-white">
+                <span className="ml-2 px-2 py-1 bg-red-500 rounded-full text-white flex-shrink-0">
                   {projectDetails.endDate
                     ? formatDate(projectDetails.endDate)
                     : "N/A"}
