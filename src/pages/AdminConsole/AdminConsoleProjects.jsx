@@ -207,7 +207,7 @@ const AdminConsoleProjects = () => {
                   </div>
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <span className="text-gray-900 whitespace-no-wrap">
+                  <span className="text-gray-900 whitespace-nowrap">
                     <span
                       className={`px-3 py-1 rounded-full ${
                         project.status === "On Track"
