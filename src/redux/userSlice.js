@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const BASE_URL = "https://prmanagement-api.onrender.com/api";
+
 //fetching users
 export const fetchUsers = createAsyncThunk(
   "user/fetchUsers",
@@ -9,15 +11,12 @@ export const fetchUsers = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const response = await axios.get(
-        "http://localhost:3000/api/users/getallusers",
-        {
-          params: {
-            [searchField]: searchTerm,
-            role,
-          },
-        }
-      );
+      const response = await axios.get(`${BASE_URL}/users/getallusers`, {
+        params: {
+          [searchField]: searchTerm,
+          role,
+        },
+      });
       return { users: response.data.data.users, count: response.data.results };
     } catch (error) {
       return rejectWithValue(
@@ -32,9 +31,7 @@ export const deleteUser = createAsyncThunk(
   "user/deleteUser",
   async (userId, { rejectWithValue }) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:3000/api/users/${userId}`
-      );
+      const response = await axios.delete(`${BASE_URL}//users/${userId}`);
       if (response.status === 200) {
         return userId;
       }
@@ -50,7 +47,7 @@ export const updateUserRole = createAsyncThunk(
   async ({ userId, newRole }, { rejectWithValue }) => {
     try {
       const response = await axios.patch(
-        `http://localhost:3000/api/users/updateUserRole/${userId}`,
+        `${BASE_URL}//users/updateUserRole/${userId}`,
         { newRole }
       );
       if (response.status === 200) {
@@ -68,14 +65,11 @@ export const updatePassword = createAsyncThunk(
   async ({ userId, currentPassword, newPassword }, { rejectWithValue }) => {
     console.log(currentPassword);
     try {
-      const response = await axios.patch(
-        "http://localhost:3000/api/users/updatePassword",
-        {
-          userId,
-          currentPassword,
-          newPassword,
-        }
-      );
+      const response = await axios.patch(`${BASE_URL}/users/updatePassword`, {
+        userId,
+        currentPassword,
+        newPassword,
+      });
 
       if (response.status === 200) {
         return response.data;
@@ -99,10 +93,9 @@ export const forgotPassword = createAsyncThunk(
   "user/forgotPassword",
   async (email, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/users/forgotPassword",
-        { email }
-      );
+      const response = await axios.post(`${BASE_URL}/users/forgotPassword`, {
+        email,
+      });
       return response.data.message;
     } catch (error) {
       if (error.response && error.response.data) {
@@ -120,7 +113,7 @@ export const verifyEmail = createAsyncThunk(
   async (token, { dispatch, rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/users/verifyEmail/${token}`
+        `${BASE_URL}/users/verifyEmail/${token}`
       );
 
       if (response.data.status === "success") {
@@ -144,7 +137,7 @@ export const resendVerificationEmail = createAsyncThunk(
   async (email, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/users/resendVerificationEmail",
+        `${BASE_URL}/users/resendVerificationEmail`,
         { email }
       );
       return response.data.message;
@@ -166,7 +159,7 @@ export const resetPassword = createAsyncThunk(
   async ({ token, password, confirmPassword }, { rejectWithValue }) => {
     try {
       const response = await axios.patch(
-        `http://localhost:3000/api/users/resetPassword/${token}`,
+        `${BASE_URL}/users/resetPassword/${token}`,
         { password, confirmPassword }
       );
       return response.data;
@@ -185,15 +178,12 @@ export const register = createAsyncThunk(
   "user/register",
   async ({ name, email, password, confirmPassword }, thunkAPI) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/users/signup",
-        {
-          name,
-          email,
-          password,
-          confirmPassword,
-        }
-      );
+      const response = await axios.post(`${BASE_URL}/users/signup`, {
+        name,
+        email,
+        password,
+        confirmPassword,
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -205,10 +195,10 @@ export const login = createAsyncThunk(
   "user/login",
   async ({ email, password }, thunkAPI) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/users/login",
-        { email, password }
-      );
+      const response = await axios.post(`${BASE_URL}/users/login`, {
+        email,
+        password,
+      });
       return {
         user: response.data.user,
         status: response.data.status,

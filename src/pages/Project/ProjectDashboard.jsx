@@ -4,7 +4,7 @@ import TaskSummary from "../../components/dashboardDistict/TaskSummary";
 import ChartComponent from "../../components/dashboardDistict/Chart";
 
 const ProjectDashboard = () => {
-  const BASE_URL = "http://localhost:3000/api";
+  const BASE_URL = "https://prmanagement-api.onrender.com/api";
 
   const [tasksData, setTasksData] = useState({
     completed: 0,

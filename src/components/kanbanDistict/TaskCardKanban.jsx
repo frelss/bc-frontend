@@ -26,7 +26,7 @@ function TaskCardKanban({
   onDeleteTask,
   onUpdateTask,
 }) {
-  const BASE_URL = "http://localhost:3000/api";
+  const BASE_URL = "https://prmanagement-api.onrender.com/api";
 
   const dispatch = useDispatch();
 

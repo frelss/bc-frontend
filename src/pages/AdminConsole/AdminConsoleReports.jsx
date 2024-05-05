@@ -11,7 +11,7 @@ import pdfFonts from "../../components/vfs_fonts";
 pdfMake.vfs = pdfFonts;
 
 const AdminConsoleReports = () => {
-  const BASE_URL = "http://localhost:3000/api";
+  const BASE_URL = "https://prmanagement-api.onrender.com/api";
 
   const dispatch = useDispatch();
 

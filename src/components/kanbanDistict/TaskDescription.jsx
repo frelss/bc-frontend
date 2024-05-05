@@ -13,7 +13,7 @@ const TaskDescription = ({
   dueDate,
   handleTaskUpdate,
 }) => {
-  const BASE_URL = "http://localhost:3000/api";
+  const BASE_URL = "https://prmanagement-api.onrender.com/api";
 
   const [subtasks, setSubtasks] = useState([]);
   const [description, setDescription] = useState("");

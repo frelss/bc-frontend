@@ -15,6 +15,8 @@ function ColumnContainer({
   updateTasksInColumn,
   onDeleteTask,
 }) {
+  const BASE_URL = "https://prmanagement-api.onrender.com/api";
+
   const [editMode, setEditMode] = useState(false);
   const [newTitle, setNewTitle] = useState(column.title || "");
 
@@ -25,7 +27,7 @@ function ColumnContainer({
   async function createTask(columnId, content) {
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/projects/${projectId}/columns/${columnId}/tasks`,
+        `${BASE_URL}/projects/${projectId}/columns/${columnId}/tasks`,
         { content }
       );
       const newTask = response.data;

@@ -5,7 +5,7 @@ import axios from "axios";
 const ProjectSelector = ({ onProjectChange }) => {
   const dispatch = useDispatch();
 
-  const BASE_URL = "http://localhost:3000/api";
+  const BASE_URL = "https://prmanagement-api.onrender.com/api";
 
   const userId = useSelector((state) => state.user?.user?.id);
 

@@ -8,6 +8,8 @@ import axios from "axios";
 const Landing = () => {
   const isDarkMode = useSelector((state) => state.user.isDarkMode);
 
+  const BASE_URL = "https://prmanagement-api.onrender.com/api";
+
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [subscriptionStatus, setSubscriptionStatus] = useState("");
@@ -18,12 +20,9 @@ const Landing = () => {
     setMessage("");
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/users/subscribe",
-        {
-          email,
-        }
-      );
+      const response = await axios.post(`${BASE_URL}/users/subscribe`, {
+        email,
+      });
       setSubscriptionStatus(response.data.status);
       setMessage(response.data.message);
     } catch (error) {

@@ -7,7 +7,7 @@ import initialTemplates from "../../data/initialTemplates";
 import axios from "axios";
 
 const TemplateCard = () => {
-  const BASE_URL = "http://localhost:3000/api";
+  const BASE_URL = "https://prmanagement-api.onrender.com/api";
 
   //states
   const [userTemplates, setUserTemplates] = useState([]);

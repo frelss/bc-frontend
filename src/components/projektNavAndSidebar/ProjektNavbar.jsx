@@ -7,7 +7,7 @@ import logo from "../../pics/pr-navbar.png";
 import ProjektSidebar from "./ProjektSidebar";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000/api";
+const BASE_URL = "https://prmanagement-api.onrender.com/api";
 
 const ProjektNavbar = () => {
   const user = useSelector((state) => state.user.user);

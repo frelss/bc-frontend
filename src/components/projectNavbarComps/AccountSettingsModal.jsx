@@ -12,7 +12,7 @@ import { MdSend } from "react-icons/md";
 import axios from "axios";
 
 const AccountSettingsModal = ({ isOpen, onClose }) => {
-  const BASE_URL = "http://localhost:3000/api";
+  const BASE_URL = "https://prmanagement-api.onrender.com/api";
 
   const modalRef = useRef(null);
 

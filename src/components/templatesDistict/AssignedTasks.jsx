@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 
 const AssignedTasks = () => {
-  const BASE_URL = "http://localhost:3000/api";
+  const BASE_URL = "https://prmanagement-api.onrender.com/api";
 
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState("");

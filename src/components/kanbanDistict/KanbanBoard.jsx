@@ -17,7 +17,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 function KanbanBoard() {
-  const BASE_URL = "http://localhost:3000/api";
+  const BASE_URL = "https://prmanagement-api.onrender.com/api";
 
   const { projectId } = useParams();
 
@@ -102,7 +102,7 @@ function KanbanBoard() {
   async function deleteColumn(columnId) {
     try {
       await axios.delete(
-        `http://localhost:3000/api/projects/${projectId}/columns/${columnId}`
+        `${BASE_URL}/projects/${projectId}/columns/${columnId}`
       );
 
       const newColumns = columns.filter((col) => col._id !== columnId);
@@ -126,7 +126,7 @@ function KanbanBoard() {
   async function updateColumn(columnId, newTitle) {
     try {
       await axios.patch(
-        `http://localhost:3000/api/projects/${projectId}/columns/${columnId}`,
+        `${BASE_URL}/projects/${projectId}/columns/${columnId}`,
         {
           title: newTitle,
         }

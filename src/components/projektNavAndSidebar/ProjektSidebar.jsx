@@ -5,7 +5,7 @@ import { setActiveProjectId } from "../../redux/projectSlice";
 import axios from "axios";
 
 const ProjektSidebar = ({ isSidebarVisible, toggleSidebar }) => {
-  const BASE_URL = "http://localhost:3000/api";
+  const BASE_URL = "https://prmanagement-api.onrender.com/api";
 
   const user = useSelector((state) => state.user.user);
   const userId = useSelector((state) => state.user?.user?.id);

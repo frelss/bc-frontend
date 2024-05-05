@@ -1,12 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const BASE_URL = "https://prmanagement-api.onrender.com/api";
+
 //create project
 export const createProject = createAsyncThunk(
   "projects/createProject",
   async ({ projectsData, userId }, { rejectWithValue }) => {
     try {
-      const response = await axios.post("http://localhost:3000/api/projects", {
+      const response = await axios.post(`${BASE_URL}/projects`, {
         ...projectsData,
         prManager: userId,
       });
@@ -23,7 +25,7 @@ export const updateProjectStatus = createAsyncThunk(
   async ({ projectId, newStatus }, { rejectWithValue }) => {
     try {
       const response = await axios.patch(
-        `http://localhost:3000/api/projects/updateProjectStatus/${projectId}`,
+        `${BASE_URL}/projects/updateProjectStatus/${projectId}`,
 
         { newStatus }
       );
@@ -42,7 +44,7 @@ export const updateProjectDeadline = createAsyncThunk(
   async ({ projectId, newDeadline }, { rejectWithValue }) => {
     try {
       const response = await axios.patch(
-        `http://localhost:3000/api/projects/updateProjectDeadline/${projectId}`,
+        `${BASE_URL}/projects/updateProjectDeadline/${projectId}`,
         { newDeadline }
       );
 
@@ -60,9 +62,7 @@ export const deleteProject = createAsyncThunk(
   "projects/deleteProject",
   async (projectId, { rejectWithValue }) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:3000/api/projects/${projectId}`
-      );
+      const response = await axios.delete(`${BASE_URL}/projects/${projectId}`);
       if (response.status === 200) {
         return projectId;
       }
@@ -77,9 +77,7 @@ export const fetchProjects = createAsyncThunk(
   "projects/fetchProjects",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get(
-        "http://localhost:3000/api/projects/getallprojects"
-      );
+      const response = await axios.get(`${BASE_URL}/projects/getallprojects`);
       return {
         projectsItems: response.data.data.projects,
         projectsCount: response.data.data.projects.length,
@@ -96,7 +94,7 @@ export const updateProjectDescription = createAsyncThunk(
   async ({ projectId, description }, { rejectWithValue }) => {
     try {
       const response = await axios.patch(
-        `http://localhost:3000/api/projects/${projectId}/description`,
+        `${BASE_URL}/projects/${projectId}/description`,
         { description }
       );
       return response.data.data;
@@ -111,7 +109,7 @@ export const fetchMilestones = createAsyncThunk(
   async ({ projectId, userId }, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/projects/${projectId}/milestones?userId=${userId}`
+        `${BASE_URL}/projects/${projectId}/milestones?userId=${userId}`
       );
       return response.data.data;
     } catch (error) {
@@ -125,7 +123,7 @@ export const createMilestone = createAsyncThunk(
   async ({ projectId, milestoneData, userId }, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/projects/${projectId}/milestones`,
+        `${BASE_URL}/projects/${projectId}/milestones`,
         { ...milestoneData, userId }
       );
       return response.data.data;
@@ -140,7 +138,7 @@ export const updateMilestone = createAsyncThunk(
   async ({ projectId, milestoneId, updateData }, { rejectWithValue }) => {
     try {
       const response = await axios.patch(
-        `http://localhost:3000/api/projects/${projectId}/milestones/${milestoneId}`,
+        `${BASE_URL}/projects/${projectId}/milestones/${milestoneId}`,
         updateData
       );
       return response.data.data;
@@ -155,7 +153,7 @@ export const deleteMilestone = createAsyncThunk(
   async ({ projectId, milestoneId }, { rejectWithValue }) => {
     try {
       await axios.delete(
-        `http://localhost:3000/api/projects/${projectId}/milestones/${milestoneId}`
+        `${BASE_URL}/projects/${projectId}/milestones/${milestoneId}`
       );
       return milestoneId;
     } catch (error) {
