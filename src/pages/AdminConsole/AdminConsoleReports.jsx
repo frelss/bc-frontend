@@ -6,8 +6,9 @@ import { fetchUsers } from "../../redux/userSlice";
 import { createSelector } from "@reduxjs/toolkit";
 import "chart.js/auto";
 import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import pdfFonts from "../../components/vfs_fonts";
+
+pdfMake.vfs = pdfFonts;
 
 const AdminConsoleReports = () => {
   const BASE_URL = "http://localhost:3000/api";
