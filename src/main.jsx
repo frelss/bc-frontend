@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store.js";
 import { disableReactDevtools } from "@fvilers/disable-react-devtools";
 
-if (import.meta.env.MODE === "production") {
+if (import.meta.env.VITE_MODE === "production") {
   disableReactDevtools();
 }
 
