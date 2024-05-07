@@ -3,17 +3,15 @@ import { AdminConsoleNavbar, AdminConsoleSidebar } from "../../components";
 
 const AdminLayout = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-200">
-      <nav>
+    <div className="flex flex-col min-h-screen bg-gray-100 w-full">
+      <nav className="w-full">
         <AdminConsoleNavbar />
       </nav>
-      <div className="flex flex-1">
-        <div>
-          <AdminConsoleSidebar />
-        </div>
-        <div className="flex-1 p-10">
+      <div className="flex flex-grow w-full">
+        <AdminConsoleSidebar />
+        <main className="flex-grow p-10 overflow-auto">
           <Outlet />
-        </div>
+        </main>
       </div>
     </div>
   );

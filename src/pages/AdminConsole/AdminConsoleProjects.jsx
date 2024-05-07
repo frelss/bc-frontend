@@ -169,7 +169,7 @@ const AdminConsoleProjects = () => {
         />
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow">
+      <div className="bg-white p-6 rounded-lg shadow overflow-x-auto">
         <table className="min-w-full leading-normal">
           <thead>
             <tr>
