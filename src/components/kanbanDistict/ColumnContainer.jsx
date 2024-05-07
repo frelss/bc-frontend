@@ -6,6 +6,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { IoMdAddCircle } from "react-icons/io";
+import { toast } from "react-toastify";
 
 function ColumnContainer({
   column,
@@ -40,6 +41,15 @@ function ColumnContainer({
       console.error("Error creating task:", error.response.data);
     }
   }
+
+  const handleDeleteColumn = (columnId) => {
+    if (column.tasks.length > 0 && isDeveloper) {
+      toast.error("Developers can only delete empty columns.");
+      return;
+    }
+
+    deleteColumn(columnId);
+  };
 
   //tsak update
   const handleTaskUpdate = (updatedTask) => {
@@ -131,7 +141,7 @@ function ColumnContainer({
         <button
           onClick={(e) => {
             e.stopPropagation();
-            deleteColumn(column._id);
+            handleDeleteColumn(column._id);
           }}
           className="stroke-gray-500 hover:stroke-white rounded px-1 py-2"
         >
