@@ -44,7 +44,7 @@ function ColumnContainer({
 
   const handleDeleteColumn = (columnId) => {
     if (column.tasks.length > 0 && isDeveloper) {
-      toast.error("Developers can only delete empty columns.");
+      toast.error("users can only delete empty columns.");
       return;
     }
 
